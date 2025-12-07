@@ -20,7 +20,7 @@
 
 ## 🎬 Demo Video
 
-<video src="resources/20251207_amdhackathon.mp4" controls width="600"></video>
+<video src="https://github.com/user-attachments/assets/6c0ff1a8-655c-435a-bb84-1486f86a5c6f" controls width="600"></video>
 
 ---
 
