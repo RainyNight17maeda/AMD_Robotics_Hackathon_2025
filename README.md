@@ -18,11 +18,9 @@
 
 ---
 
-## 🎬 Demo
+## 🎬 Demo Video
 
-Coming Soon!(compressing...)
-
-![Demo Video](resources/20251207_amdhackathon.mp4)
+<video src="resources/20251207_amdhackathon.mp4" controls width="600"></video>
 
 ---
 
