@@ -22,9 +22,7 @@
 
 Coming Soon!(compressing...)
 
-```markdown
-<video src="resources/20251207_amdhackathon.mp4" controls width="600"></video>
-```
+![Demo Video](resources/20251207_amdhackathon.mp4)
 
 ---
 
