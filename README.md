@@ -9,28 +9,31 @@
 
 ---
 
-# 🥢 AMD Robotic Hackathon 2025 — Sushi Taisho
+# AMD Robotic Hackathon 2025 — Automated Printing
 
 ### **Team: Rainy Nights**
 
-Shunsuke Kanzawa
-Taro Sukegawa
-Ryudai Yokokawa
-Takeru Igarashi
+- Shunsuke Kanzawa
+
+- Taro Sukegawa
+
+- Ryudai Yokokawa
+
+- Takeru Igarashi
 
 ---
 
 ## 🎬 Demo
 
 ```markdown
-<video src="resources/demo.mp4" controls width="600"></video>
+<video src="resources/20251207_amdhackathon.mp4" controls width="600"></video>
 ```
 
 ---
 
-## 🧭 概要 / Summary
+## 概要 / Summary
 
-### 1. ミッション
+## 🧭 1. ミッション
 
 本プロジェクトは、**オープンソースかつ低コストなロボットアーム SO-101 を活用し、3Dプリンタの「後処理」を自動化する**ことを目指しています。
 近年、3Dプリンタは個人から企業まで幅広く普及し、遠隔印刷や自動キューイングなど「印刷の自動化」は進んでいます。しかし、**印刷後の取り出し・片付けは依然として人力に依存**しており、ユーザーはプリンタに縛られ続けています。
@@ -112,7 +115,10 @@ SO-101 以外のアームや別カメラへの移行も最小限の変更で対�
 
 ## 📦 Dataset
 
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Policy--3DPrint--Clean--Test-blue)](https://huggingface.co/RainyNight17/policy-3dprint-clean-test/tree/main)
+[![Hugging Face Dataset](https://img.shields.io/badge/Dataset-record--3dprint--clean-blue)](https://huggingface.co/datasets/RainyNight17/record-3dprint-clean)
+
+[![Hugging Face Dataset](https://img.shields.io/badge/Dataset-record--calib--clean-blue)](https://huggingface.co/datasets/RainyNight17/record-calib-clean)
+
 
 ## 🤖 Model
 
