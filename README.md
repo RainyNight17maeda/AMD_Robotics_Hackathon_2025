@@ -48,7 +48,7 @@ AMD_Robotics_Hackathon_2025_ProjectTemplate-main/
 ├── README.md
 └── mission
     ├── code
-    │   └── <code and script>
+    │   └── <code and script>
     └── wandb
         └── <latest run directory copied from wandb of your training job>
 ```
@@ -66,15 +66,15 @@ outputs/train/smolvla_so101_2cube_30k_steps/wandb/
 ├── latest-run -> run-20251029_063411-tz1cpo59
 └── run-20251029_063411-tz1cpo59
     ├── files
-    │   ├── config.yaml
-    │   ├── output.log
-    │   ├── requirements.txt
-    │   ├── wandb-metadata.json
-    │   └── wandb-summary.json
+    │   ├── config.yaml
+    │   ├── output.log
+    │   ├── requirements.txt
+    │   ├── wandb-metadata.json
+    │   └── wandb-summary.json
     ├── logs
-    │   ├── debug-core.log -> /dataset/.cache/wandb/logs/core-debug-20251029_063411.log
-    │   ├── debug-internal.log
-    │   └── debug.log
+    │   ├── debug-core.log -> /dataset/.cache/wandb/logs/core-debug-20251029_063411.log
+    │   ├── debug-internal.log
+    │   └── debug.log
     ├── run-tz1cpo59.wandb
     └── tmp
         └── code

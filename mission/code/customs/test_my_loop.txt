@@ -1,0 +1,11 @@
+python my_record_loop.py \
+  --robot.type=so101_follower \
+  --robot.port=/dev/ttyACM1 \
+  --robot.id=my_so101_follower \
+  --robot.cameras="{ top: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30}, front: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30}}" \
+  --teleop.type=so101_leader \
+  --teleop.port=/dev/ttyACM0 \
+  --teleop.id=my_so101_leader \
+  --dataset.repo_id=${HF_USER}/so101_garbage_pickup \
+  --dataset.single_task='Throw away 3D-print trash' \
+  --dataset.num_episodes=20

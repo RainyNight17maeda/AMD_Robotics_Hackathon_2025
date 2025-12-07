@@ -1,0 +1,188 @@
+/home/amddemo/.cache/huggingface/lerobot/RainyNight17
+
+カメラ捜索
+lerobot-find-cameras opencv
+
+テレオペ
+lerobot-teleoperate \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM1 \
+--robot.id=my_awesome_follower_arm \
+--robot.cameras="{ front: {type: opencv, index_or_path: /dev/video6, width: 640, height: 480, fps: 15}, top: {type: opencv, index_or_path: /dev/video8, width: 640, height: 480, fps: 15}, side: {type: opencv, index_or_path: /dev/video4, width: 640, height: 480, fps: 15}}" \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM0 \
+--teleop.id=my_awesome_leader_arm \
+--display_data=true
+
+
+データセットの収集
+lerobot-record \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM1 \
+--robot.id=my_awesome_follower_arm \
+--robot.cameras="{ front: {type: opencv, index_or_path: 6, width: 640, height: 480, fps: 15}, top: {type: opencv, index_or_path: 8, width: 640, height: 480, fps: 15} }" \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM0 \
+--teleop.id=my_awesome_leader_arm \
+--display_data=true \
+--dataset.repo_id=RainyNight17/record-vscode-test \
+--dataset.num_episodes=15 \
+--dataset.episode_time_s=20 \cameras=camera_config
+--dataset.reset_time_s=6 \
+--dataset.single_task="Grab test"
+
+lerobot-record \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM1 \
+--robot.id=my_awesome_follower_arm \
+--robot.cameras="{ front: {type: opencv, index_or_path: 6, width: 640, height: 480, fps: 15}, top: {type: opencv, index_or_path: 8, width: 640, height: 480, fps: 15} }" \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM0 \
+--teleop.id=my_awesome_leader_arm \
+--display_data=true \
+--dataset.repo_id=RainyNight17/record-vscode-test \
+--dataset.num_episodes=7 \
+--dataset.episode_time_s=20 \
+--dataset.reset_time_s=6 \
+--dataset.single_task="Vscode-test"
+
+クラウド学習
+from huggingface_hub import login
+login(token="token")
+!lerobot-train \
+  --dataset.repo_id=RainyNight17/rec_vscode_test\
+  --dataset.root=${HOME}/lerobot/RainyNight17/rec_vscode_test \
+  --policy.type=act \
+  --output_dir=outputs/train/act_vscode-test \
+  --job_name=act_so101_vscode-test \
+  --step 10000 \
+  --policy.device=cuda \
+  --wandb.enable=false \
+  --policy.repo_id=RainyNight17/policy-vscode-test
+
+
+推論
+lerobot-record \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM1 \
+--robot.cameras="{ front: {type: opencv, index_or_path: /dev/video6, width: 640, height: 480, fps: 15}, top: {type: opencv, index_or_path: /dev/video4, width: 640, height: 480, fps: 15}}" \
+--robot.id=my_awesome_follower_arm \
+--display_data=true \
+--dataset.num_episodes=5 \
+--dataset.episode_time_s=50 \
+--dataset.reset_time_s=6 \
+--policy.path=RainyNight17/policy-3dprint-clean-test \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM0 \
+--teleop.id=my_awesome_leader_arm \
+--dataset.repo_id=RainyNight17/eval_3dprint-clean-test \
+--dataset.push_to_hub=False \
+--dataset.single_task="Grab the printing models" 
+
+vscodeに学習済みデータをダウンロード
+huggingface-cli download ${HF_USER}/my_policy
+
+
+
+本番練習コード
+lerobot-record \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM1 \
+--robot.id=my_awesome_follower_arm \
+--robot.cameras="{ front: {type: opencv, index_or_path: 6, width: 640, height: 480, fps: 15}, top: {type: opencv, index_or_path: 4, width: 640, height: 480, fps: 15} }" \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM0 \
+--teleop.id=my_awesome_leader_arm \
+--display_data=true \
+--dataset.repo_id=RainyNight17/record-3dprint-clean \
+--dataset.num_episodes=100 \
+--dataset.episode_time_s=60 \
+--dataset.reset_time_s=5 \
+--dataset.single_task="clean-printed-objects"
+
+lerobot-teleoperate \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM1 \
+--robot.id=my_awesome_follower_arm \
+--robot.cameras="{ front: {type: opencv, index_or_path: /dev/video6, width: 640, height: 480, fps: 15}, top: {type: opencv, index_or_path: /dev/video4, width: 640, height: 480, fps: 15}}" \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM0 \
+--teleop.id=my_awesome_leader_arm \
+--display_data=true
+
+
+
+
+
+lerobot-record \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM1 \
+--robot.id=my_awesome_follower_arm \
+--robot.cameras="{ front: {type: opencv, index_or_path: 6, width: 640, height: 480, fps: 15}, top: {type: opencv, index_or_path: 4, width: 640, height: 480, fps: 15} }" \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM0 \
+--teleop.id=my_awesome_leader_arm \
+--display_data=true \
+--dataset.repo_id=RainyNight17/record-3dprint-clean \
+--dataset.num_episodes=40 \
+--dataset.episode_time_s=60 \
+--dataset.reset_time_s=5 \
+--dataset.single_task="clean-printed-objects" \
+--resume=true
+
+
+
+
+
+
+lerobot-record \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM1 \
+--robot.id=my_awesome_follower_arm \
+--robot.cameras="{ front: {type: opencv, index_or_path: 6, width: 640, height: 480, fps: 15}, top: {type: opencv, index_or_path: 4, width: 640, height: 480, fps: 15} }" \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM0 \
+--teleop.id=my_awesome_leader_arm \
+--display_data=true \
+--dataset.repo_id=RainyNight17/record-calib-clean \
+--dataset.num_episodes=2 \
+--dataset.episode_time_s=60 \
+--dataset.reset_time_s=5 \
+--dataset.single_task="clean-calib-object"
+
+
+lerobot-replay \
+    --robot.type=so101_follower \
+    --robot.port=/dev/ttyACM1 \
+    --robot.id=my_awesome_follower_arm \
+    --dataset.repo_id=RainyNight17/record-calib-clean \
+    --dataset.episode=0 # choose the episode you want to replay
+    
+    
+
+
+推論
+lerobot-record \
+--robot.type=so101_follower \
+--robot.port=/dev/ttyACM1 \
+--robot.cameras="{ front: {type: opencv, index_or_path: /dev/video6, width: 640, height: 480, fps: 15}, top: {type: opencv, index_or_path: /dev/video4, width: 640, height: 480, fps: 15}}" \
+--robot.id=my_awesome_follower_arm \
+--display_data=true \
+--dataset.num_episodes=1 \
+--dataset.episode_time_s=60 \
+--dataset.reset_time_s=6 \
+--policy.path=RainyNight17/policy-3dprint-clean-test \
+--teleop.type=so101_leader \
+--teleop.port=/dev/ttyACM0 \
+--teleop.id=my_awesome_leader_arm \
+--dataset.repo_id=RainyNight17/eval_3dprint-clean-test3 \
+--dataset.push_to_hub=False \
+--dataset.single_task="Grab the printing models"
+
+
+lerobot-replay \
+    --robot.type=so101_follower \
+    --robot.port=/dev/ttyACM1 \
+    --robot.id=my_awesome_follower_arm \
+    --dataset.repo_id=RainyNight17/record-calib-clean \
+    --dataset.episode=0
