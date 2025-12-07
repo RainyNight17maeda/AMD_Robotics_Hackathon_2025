@@ -20,15 +20,19 @@
 
 ## 🎬 Demo
 
-```markdown
-<video src="resources/20251207_amdhackathon.mp4" controls width="600"></video>
-```
+Coming Soon!(compressing...)
+
+[](
+```markdown \
+<video src="resources/20251207_amdhackathon.mp4" controls width="600"></video> \
+``` \
+)
 
 ---
 
-## 概要 / Summary
+## 詳細 / Details
 
-## 🧭 1. ミッション
+## 🧭 1. Mission / ミッション
 
 本プロジェクトは、**オープンソースかつ低コストなロボットアーム SO-101 を活用し、3Dプリンタの「後処理」を自動化する**ことを目指しています。
 近年、3Dプリンタは個人から企業まで幅広く普及し、遠隔印刷や自動キューイングなど「印刷の自動化」は進んでいます。しかし、**印刷後の取り出し・片付けは依然として人力に依存**しており、ユーザーはプリンタに縛られ続けています。
@@ -49,7 +53,7 @@
 
 ---
 
-## 🛠️ 3. 技術的な実装
+## 🛠️ 3. Technical implementations/ 技術的な実装
 
 * **使用プリンタ**：Bambu Lab A1 mini
 * **ロボットアーム**：SO-101（1本）
