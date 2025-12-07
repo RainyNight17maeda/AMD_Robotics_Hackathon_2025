@@ -49,7 +49,7 @@
 
 ---
 
-## 🛠️ Technical implementations / 技術的な実装
+## 🛠️ 3. Technical implementations / 技術的な実装
 
 * **使用プリンタ**：Bambu Lab A1 mini
 * **ロボットアーム**：SO-101（1本）
